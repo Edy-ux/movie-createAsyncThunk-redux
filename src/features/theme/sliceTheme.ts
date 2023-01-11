@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
-
-type ThemeState = boolean
-const initialState: ThemeState = false;
-
+type ThemeState = boolean;
+const themeFromLocalStorage = !!localStorage.getItem('theme-movie');
+const initialState: ThemeState = themeFromLocalStorage;
 
 const themeSlice = createSlice({
   name: 'theme',
@@ -12,12 +10,13 @@ const themeSlice = createSlice({
 
   reducers: {
     toogleTheme(state) {
-      return state = !state
+      state
+        ? localStorage.removeItem('theme-movie')
+        : localStorage.setItem('theme-movie', 'dark-on');
+      return (state = !state);
     },
   },
 });
 
-
-
-export const {toogleTheme } =  themeSlice.actions
-export default themeSlice.reducer
+export const { toogleTheme } = themeSlice.actions;
+export default themeSlice.reducer;

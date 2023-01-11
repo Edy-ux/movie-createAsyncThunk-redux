@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
-import themeReducer from "./theme/sliceTheme";
-// import cartReducer  from './cart/slice' 
+import { combineReducers, applyMiddleware } from 'redux';
+import darkTheme from './theme/sliceTheme';
+import movies from './movies/movieSlice';
 
-const rootReducer = combineReducers({themeReducer})        
+// import cartReducer  from './cart/slice'
 
-export default rootReducer
+const rootReducer = combineReducers({ darkTheme, movies });
+
+export default rootReducer;
