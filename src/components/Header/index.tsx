@@ -16,9 +16,9 @@ const Header = () => {
   const onToggle = () => dispatch(toogleTheme());
 
   return (
-    <header className="">
-      <nav className="border-b border-gray-200 border-opacity-70 py-2.5 ">
-        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+    <header className="mb-20">
+      <nav className="border-b border-gray-200 border-opacity-25 py-2.5">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl ">
           <a href="#" className="flex items-center">
             <span className="self-center text-xl  font-semibold whitespace-nowrap">
               Movies
@@ -31,7 +31,7 @@ const Header = () => {
               className="hover:opacity-40 cursor-pointer"
               onClick={onToggle}
             />
-          )}
+          )}  
           {!darkTheme && (
             <BsFillMoonFill
               onClick={onToggle}
