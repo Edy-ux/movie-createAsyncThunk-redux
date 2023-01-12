@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+
 interface MovieCardProps {
   backdrop_path: string;
   poster_path: string;
@@ -9,7 +10,8 @@ interface MovieCardProps {
 }
 
 const MovieCard: FC<MovieCardProps> = (props) => {
-  const { poster_path, overview, title, id, backdrop_path } = props;
+  const { poster_path, overview, title, id } = props;
+
   return (
     <div
       className="max-w-sm w-auto bg-white mx-auto rounded-xl border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-800 hover:-translate-y-4 
@@ -21,6 +23,7 @@ const MovieCard: FC<MovieCardProps> = (props) => {
         alt={title}
         className="rounded-t-xl h-96 w-full object-cover object-center"
       />
+
       <div className="p-5">
         <h5 className="font-bold text-2xl mb-2">{title}</h5>
         {overview && (

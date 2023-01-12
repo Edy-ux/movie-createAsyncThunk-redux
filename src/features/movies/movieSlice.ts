@@ -1,5 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import.meta.env 
+import.meta.env;
 export const getMovies = createAsyncThunk(
   'movies/getMovies',
   async (data, thunkApi) => {
@@ -8,7 +8,6 @@ export const getMovies = createAsyncThunk(
         `https://api.themoviedb.org/3/movie/top_rated?api_key=a4975dccf513ab10f61d9cda6effa42d`
       );
       return await response.json();
-      
     } catch (error: any) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -22,7 +21,7 @@ interface MovieState {
   movieDetails: null | any;
 }
 
-const data = () => getMovies();
+export const  data = () => getMovies();
 
 const initialState: MovieState = {
   loading: false,
@@ -41,13 +40,16 @@ const movieSlice = createSlice({
     },
   },
   extraReducers(builder) {
-     builder.addCase(getMovies.pending, (state) => {
+    builder.addCase(getMovies.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getMovies.fulfilled, (state, action: PayloadAction<{ results: any[] }>) => {
-      state.loading = false;
-      state.data = action.payload;
-    });
+    builder.addCase(
+      getMovies.fulfilled,
+      (state, action: PayloadAction<{ results: any[] }>) => {
+        state.loading = false;
+        state.data = action.payload;
+      }
+    );
     builder.addCase(getMovies.rejected, (state, action: PayloadAction<any>) => {
       state.loading = false;
       state.error = action.payload;
